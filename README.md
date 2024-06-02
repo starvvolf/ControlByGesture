@@ -2,12 +2,12 @@
 mouse move, scroll and push shortcut key by gesture with MediaPipe
 # 손동작 인식을 통한 제어 시스템(Hand Gesture Recognition with MediaPipe)
 
-이 프로젝트는 MediaPipe와 OpenCV를 사용하여 손동작을 인식하고, 인식된 동작에 따라 다양한 작업을 수행하는 시스템입니다. YouTube 제어, 웹 서핑, 자동 스크롤 모드 등의 기능을 포함하고 있습니다.
+이 프로젝트는 MediaPipe와 OpenCV를 사용하여 손동작을 인식하고, 인식된 동작에 따라 다양한 작업을 수행하는 시스템입니다. YouTube 제어, 웹 서핑, 자동 스크롤 모드 등의 기능을 포함하고 있습니다.   
 This project is a hand gesture recognition system using MediaPipe and OpenCV. The system can detect various hand gestures and perform corresponding actions such as controlling YouTube, web surfing, and auto-scrolling modes.
 
 ## 설치 방법(Installation)    
-필요한 라이브러리를 설치하려면 아래 명령어를 실행하세요:
-To install the necessary dependencies, run the following command:
+필요한 라이브러리를 설치하려면 아래 명령어를 실행하세요:   
+To install the necessary dependencies, run the following command:   
 ```bash
 pip install opencv-python mediapipe numpy pyautogui
 ```
@@ -16,13 +16,13 @@ pip install opencv-python mediapipe numpy pyautogui
 ## 사용 방법(Usage)
 메인 파이썬 스크립트 control_by_gesture.py 를 실행하여 프로젝트를 사용합니다:
 
-웹캠이 정상적으로 연 결되어 있어야 합니다.
+웹캠이 정상적으로 연 결되어 있어야 합니다.   
 Ensure that you have a working webcam connected to your system.
 
 
 ## 설명(Description)
 
-이 프로젝트는 MediaPipe를 이용하여 손 관절을 인식하고, OpenCV를 사용하여 웹캠 이미지를 캡처합니다. 인식된 손동작은 사전에 준비된 동작 데이터를 바탕으로 K-Nearest Neighbor(KNN) 모델을 사용하여 분류됩니다. 인식된 동작에 따라 다양한 모드와 작업이 수행됩니다.
+이 프로젝트는 MediaPipe를 이용하여 손 관절을 인식하고, OpenCV를 사용하여 웹캠 이미지를 캡처합니다. 인식된 손동작은 사전에 준비된 동작 데이터를 바탕으로 K-Nearest Neighbor(KNN) 모델을 사용하여 분류됩니다. 인식된 동작에 따라 다양한 모드와 작업이 수행됩니다.   
 This project utilizes MediaPipe for hand landmark detection and OpenCV for capturing webcam images. The detected hand gestures are classified using a K-Nearest Neighbors (KNN) model trained on pre-recorded gesture data. Based on the recognized gestures, different modes and actions are triggered.
 
 ## 모드와 제스쳐(Modes and Gesture)
@@ -105,9 +105,9 @@ mode.py 스크립트는 다양한 모드와 해당 손동작의 로직을 처리
 ## 예제 코드
 다음은 YouTube 모드에서 손동작을 처리하는 예제입니다:
 
-
+```
     python
-    코드 복사
+    
     def handle_mode1(mode, idx, last_gesture_time, last_gesture):
         text=''
         current_time = time.time()
@@ -140,10 +140,23 @@ mode.py 스크립트는 다양한 모드와 해당 손동작의 로직을 처리
                 if idx==5:
                     mode = 0
         return mode, last_gesture_time, last_gesture,text
-라이선스
-이 프로젝트는 MIT 라이선스에 따라 배포됩니다.
 
-감사의 말
-Google의 MediaPipe
-이미지 처리를 위한 OpenCV
-UI 자동화를 위한 PyAutoGUI
+```
+## Demo
+https://github.com/starvvolf/ControlByGesture/assets/118524918/b5f34129-018a-46a1-b092-b45cec8ea091
+
+
+## if somethingwrong
+제스쳐 인식이 제대로 되지 않는다면, gatherdataset.py를 이용해 자신의 손에 맞게 데이터셋을 수집할 수 있습니다.
+code by: https://github.com/kairess/Rock-Paper-Scissors-Machine
+
+
+
+
+
+
+## Reference   
+Google MediaPipe   
+https://github.com/kairess/Rock-Paper-Scissors-Machine   
+https://github.com/ntu-rris/google-mediapipe   
+
