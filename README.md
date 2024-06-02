@@ -94,7 +94,7 @@ In Websurfing Mode, there are 10 gestures.
 14 (Thumbright - extend thumb and rotate fist to the right) - Move mouse cursor right   
 10 (OK) - Click     
 
-#### 스크롤   
+#### Scroll  
 0 (Fist) - Scroll down   
 
 6 (Six - only extend the pinky finger) - Scroll up   
