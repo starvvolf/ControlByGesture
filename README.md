@@ -14,9 +14,10 @@ pip install opencv-python mediapipe numpy pyautogui
 
 
 ## 사용 방법(Usage)
+파일은 data 디렉토리의 gesture_train_fy.py(데이터셋), 그리고 control_by_gesture.py(메인), mode.py(모드관련설정) 으로 이루어져 있습니다.
 메인 파이썬 스크립트 control_by_gesture.py 를 실행하여 프로젝트를 사용합니다:
 
-웹캠이 정상적으로 연 결되어 있어야 합니다.   
+웹캠이 정상적으로 연결되어 있어야 합니다.   
 Ensure that you have a working webcam connected to your system.
 
 
@@ -26,27 +27,38 @@ Ensure that you have a working webcam connected to your system.
 This project utilizes MediaPipe for hand landmark detection and OpenCV for capturing webcam images. The detected hand gestures are classified using a K-Nearest Neighbors (KNN) model trained on pre-recorded gesture data. Based on the recognized gestures, different modes and actions are triggered.
 
 ## 모드와 제스쳐(Modes and Gesture)
-### Gesture and their code number   
-![thumbleft](https://github.com/starvvolf/ControlByGesture/assets/118524918/9afec3d1-df53-4282-b6d5-44aff8cd8907)   
+### Gesture and their code number    
+****
 13:thumbleft    
+![thumbleft](https://github.com/starvvolf/ControlByGesture/assets/118524918/9afec3d1-df53-4282-b6d5-44aff8cd8907)   
+****
+14:thumbright      
 ![thumbright](https://github.com/starvvolf/ControlByGesture/assets/118524918/d2bdb9ce-fabb-4b1d-9b2e-84084bdf1a14)  
-14:thumbright   
-![v](https://github.com/starvvolf/ControlByGesture/assets/118524918/17820310-0f34-4f5e-beab-333341a46b3e)
-9:v   
+****
+9:v  
+![v](https://github.com/starvvolf/ControlByGesture/assets/118524918/17820310-0f34-4f5e-beab-333341a46b3e)   
+****
+10:ok  
 ![ok](https://github.com/starvvolf/ControlByGesture/assets/118524918/da6a6b6e-5abe-4cac-a840-91126df4d343)
-10:ok   
-![six](https://github.com/starvvolf/ControlByGesture/assets/118524918/049d5cff-1f12-486b-80bb-9d487a5cd113)
+****  
 6:six   
-![fist](https://github.com/starvvolf/ControlByGesture/assets/118524918/dd0cfabf-9b11-42be-b5eb-dd14d9f28def)
+![six](https://github.com/starvvolf/ControlByGesture/assets/118524918/049d5cff-1f12-486b-80bb-9d487a5cd113)
+****
 0:fist   
-![spiderman](https://github.com/starvvolf/ControlByGesture/assets/118524918/7835bc16-f96e-419f-9290-ae35b33a64a5)
+![fist](https://github.com/starvvolf/ControlByGesture/assets/118524918/dd0cfabf-9b11-42be-b5eb-dd14d9f28def)
+****  
 8:spiderman(2,5)   
-![rock](https://github.com/starvvolf/ControlByGesture/assets/118524918/928a5b66-bf4e-430a-91f9-c5ba852c7d4e)
+![spiderman](https://github.com/starvvolf/ControlByGesture/assets/118524918/7835bc16-f96e-419f-9290-ae35b33a64a5)
+****   
 7:rock(1,2,5)   
-![five](https://github.com/starvvolf/ControlByGesture/assets/118524918/b0688c3c-64e6-4943-af84-245aa8f7c9bb)
+![rock](https://github.com/starvvolf/ControlByGesture/assets/118524918/928a5b66-bf4e-430a-91f9-c5ba852c7d4e)
+****   
 5:five   
-![four](https://github.com/starvvolf/ControlByGesture/assets/118524918/7816cf33-1da3-492f-adc0-60f3ec7c4270)
+![five](https://github.com/starvvolf/ControlByGesture/assets/118524918/b0688c3c-64e6-4943-af84-245aa8f7c9bb)
+**** 
 4:four   
+![four](https://github.com/starvvolf/ControlByGesture/assets/118524918/7816cf33-1da3-492f-adc0-60f3ec7c4270)
+****
 
 ### Mode0-ModeChange
 At first we are in the ModeChange mode(mode 0)   
