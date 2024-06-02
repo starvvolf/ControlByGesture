@@ -158,5 +158,6 @@ code by: https://github.com/kairess/Rock-Paper-Scissors-Machine
 ## Reference   
 Google MediaPipe   
 https://github.com/kairess/Rock-Paper-Scissors-Machine   
-https://github.com/ntu-rris/google-mediapipe   
+https://github.com/ntu-rris/google-mediapipe  
+github Copilot
 
