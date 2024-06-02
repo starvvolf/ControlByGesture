@@ -1,32 +1,34 @@
 # ControlByGesture
 mouse move, scroll and push shortcut key by gesture with MediaPipe
-# 손동작 인식을 통한 제어 시스템(Hand Gesture Recognition with MediaPipe)
+# Hand Gesture Recognition with MediaPipe
 
-이 프로젝트는 MediaPipe와 OpenCV를 사용하여 손동작을 인식하고, 인식된 동작에 따라 다양한 작업을 수행하는 시스템입니다. YouTube 제어, 웹 서핑, 자동 스크롤 모드 등의 기능을 포함하고 있습니다.   
 This project is a hand gesture recognition system using MediaPipe and OpenCV. The system can detect various hand gestures and perform corresponding actions such as controlling YouTube, web surfing, and auto-scrolling modes.
 
-## 설치 방법(Installation)    
-필요한 라이브러리를 설치하려면 아래 명령어를 실행하세요:   
+## Demo
+https://github.com/starvvolf/ControlByGesture/assets/118524918/b5f34129-018a-46a1-b092-b45cec8ea091
+
+
+## Installation
+   
 To install the necessary dependencies, run the following command:   
 ```bash
 pip install opencv-python mediapipe numpy pyautogui
 ```
 
 
-## 사용 방법(Usage)
-파일은 data 디렉토리의 gesture_train_fy.py(데이터셋), 그리고 control_by_gesture.py(메인), mode.py(모드관련설정) 으로 이루어져 있습니다.
-메인 파이썬 스크립트 control_by_gesture.py 를 실행하여 프로젝트를 사용합니다:
+## Usage
+The project consists of the following files: `data/gesture_train_fy.py` (Dataset), `control_by_gesture.py` (Main), and `mode.py` (Mode settings).
+To use the project, run the main Python script `control_by_gesture.py`:
 
 웹캠이 정상적으로 연결되어 있어야 합니다.   
 Ensure that you have a working webcam connected to your system.
 
 
-## 설명(Description)
-
-이 프로젝트는 MediaPipe를 이용하여 손 관절을 인식하고, OpenCV를 사용하여 웹캠 이미지를 캡처합니다. 인식된 손동작은 사전에 준비된 동작 데이터를 바탕으로 K-Nearest Neighbor(KNN) 모델을 사용하여 분류됩니다. 인식된 동작에 따라 다양한 모드와 작업이 수행됩니다.   
+## Description
+  
 This project utilizes MediaPipe for hand landmark detection and OpenCV for capturing webcam images. The detected hand gestures are classified using a K-Nearest Neighbors (KNN) model trained on pre-recorded gesture data. Based on the recognized gestures, different modes and actions are triggered.
 
-## 모드와 제스쳐(Modes and Gesture)
+## Modes and Gesture
 ### Gesture and their code number    
 ****
 13:thumbleft    
@@ -61,106 +63,68 @@ This project utilizes MediaPipe for hand landmark detection and OpenCV for captu
 ****
 
 ### Mode0-ModeChange
-At first we are in the ModeChange mode(mode 0)   
+At first we are in the ModeChange mode(mode 0)    
    
-ModeChange 에서는 세 개의 제스쳐가 있습니다. 같은 제스쳐를 2초 유지하면 각 모드로 넘어갑니다.   
-4(주먹)-YouTube 모드 : YouTube 재생을 손동작으로 제어합니다.   
-10(OK)- 웹 서핑 모드 : 웹 페이지를 탐색하고 상호작용합니다.   
-7(Rock-1,2,5번 손가락만 펴기)- 자동 스크롤 모드 : 웹 페이지를 자동으로 스크롤합니다.   
+In ModeChange mode, there are three gestures. If you maintain the same gesture for 2 seconds, you will switch to each respective mode.   
+4 (Fist) - YouTube Mode: Controls YouTube playback using gestures.     
+10 (OK) - Web Surfing Mode: Navigates and interacts with web pages..     
+7 (Rock - only extend fingers 1, 2, and 5) - Auto Scroll Mode: Automatically scrolls through web pages.   
 
 ### Mode1-YoutubeMode   
    
-YouTubeMode에서는 9개의 제스쳐가 있습니다.    
-9(V)-전체화면   
-0(주먹)-재생/일시정지   
-10(OK)-다음 비디오   
-6(six-새끼만 펴기)-이전페이지   
-7(Rock-1,2,5펴기)- 볼륨 업   
-8(Spiderman-2,5펴기)-볼륨 다운   
-13(thumbleft-엄지 펴고 주먹쥔 상태로 손 왼쪽으로 돌리기 )-이전으로 스킵   
-14(thumbright-엄지 펴고 주먹쥔 상태로 손 오른쪽으로 돌리기 )-다음으로 스킵   
-5(전부펴기,손바닥보여주기)-2초이상 유지하면 ModeChange로 넘어감.   
+In YouTube Mode, there are 9 gestures.   
+
+9 (V) - Fullscreen   
+0 (Fist) - Play/Pause   
+10 (OK) - Next Video   
+6 (Six - only extend the pinky finger) - Previous Page   
+7 (Rock - only extend fingers 1, 2, and 5) - Volume Up   
+8 (Spiderman - only extend fingers 2 and 5) - Volume Down   
+13 (Thumbleft - extend thumb and rotate fist to the left) - Skip Backward   
+14 (Thumbright - extend thumb and rotate fist to the right) - Skip Forward   
+5 (Extend all fingers, showing palm) - If held for more than 2 seconds, switches to ModeChange.   
 
 ### Mode2-WebsurfingMode   
 
-WebsurfingMode에서는 10개의 제스쳐가 있습니다.     
-#### 마우스조종       
-7(Rock-1,2,5펴기)- 마우스 커서 업     
-8(Spiderman-2,5펴기)-마우스 커서 다운      
-13(thumbleft-엄지 펴고 주먹쥔 상태로 손 왼쪽으로 돌리기 )-마우스 커서 왼쪽으로      
-14(thumbright-엄지 펴고 주먹쥔 상태로 손 오른쪽으로 돌리기 )-마우스 커서 오른쪽으로     
-10(OK)-클릭      
+In Websurfing Mode, there are 10 gestures.
+#### Mouse Control       
+7 (Rock - only extend fingers 1, 2, and 5) - Move mouse cursor up   
+8 (Spiderman - only extend fingers 2 and 5) - Move mouse cursor down   
+13 (Thumbleft - extend thumb and rotate fist to the left) - Move mouse cursor left   
+14 (Thumbright - extend thumb and rotate fist to the right) - Move mouse cursor right   
+10 (OK) - Click     
 
 #### 스크롤   
-0(주먹)-스크롤 다운      
-6(six-새끼만 펴기)-스크롤 업      
-9(V)-이전페이지      
+0 (Fist) - Scroll down   
 
-17(손하트,1번 2번만 펴서 서로 크로스)-네이버 웹툰 FHD전체화면 기준 웹툰 다음화로 넘기기 버튼 좌표 클릭     
-5(전부펴기,손바닥보여주기)-2초이상 유지하면 ModeChange로 넘어감.   
+6 (Six - only extend the pinky finger) - Scroll up   
+
+9 (V) - Previous page   
+
+17 (Hand heart, cross fingers 1 and 2) - Click the next episode button on Naver Webtoon (FHD fullscreen mode)   
+
+5 (Extend all fingers, showing palm) - If held for more than 2 seconds, switches to ModeChange.   
 
 ### Mode3- AutoScrollMode      
-AutoScrollMode 손이 인식되는 한 자동으로 스크롤을 내립니다.   
-4(four)-스크롤 내리던 걸 멈춥니다.   
-10(OK)-스크롤을 올립니다.   
-9(V)-1.5초이상 유지시 이전페이지로   
-5(전부펴기,손바닥보여주기)-2초이상 유지하면 ModeChange로 넘어감.   
+In Auto Scroll Mode, the page scrolls down automatically as long as a hand is detected.   
+
+4 (Four) - Stop scrolling down   
+10 (OK) - Scroll up   
+9 (V) - If held for more than 1.5 seconds, goes to the previous page   
+5 (Extend all fingers, showing palm) - If held for more than 2 seconds, switches to ModeChange.   
 
 
-## 기능 구성
-OpenCV를 사용하여 웹캠 이미지 캡처   
-MediaPipe를 사용하여 손 관절 인식   
-학습된 KNN 모델을 기반으로 손동작 인식   
-인식된 동작과 현재 모드에 따라 작업 수행
-mode.py 스크립트는 다양한 모드와 해당 손동작의 로직을 처리합니다.   
+## Features
 
-## 예제 코드
-다음은 YouTube 모드에서 손동작을 처리하는 예제입니다:
+1. Capture webcam images using OpenCV   
+2. Recognize hand landmarks using MediaPipe   
+3. Recognize hand gestures based on a trained KNN model   
+4. Perform tasks based on the recognized gestures and current mode   
 
-```
-    python
-    
-    def handle_mode1(mode, idx, last_gesture_time, last_gesture):
-        text=''
-        current_time = time.time()
-        if idx != last_gesture:
-            last_gesture = idx
-            last_gesture_time = current_time
-        elif idx == last_gesture:
-            if current_time - last_gesture_time > 0.5 and idx in {7, 8, 13, 14}:  # 'volumeup', 'volumedown', 'skipforward', 'skipbackward'
-                last_gesture_time = current_time  # Update the last_gesture_time
-                if idx == 7:  # 'volumeup' gesture
-                    pyautogui.press('up')
-                elif idx == 8:  # 'volumedown' gesture
-                    pyautogui.press('down')
-                elif idx == 13:  # 'skipbackward' gesture
-                    pyautogui.press('left')
-                elif idx == 14:  # 'skipforward' gesture
-                    pyautogui.press('right')
-            elif current_time - last_gesture_time > 0.75 and idx in {9, 0, 10, 6}:
-                last_gesture_time = current_time  # Update the last_gesture_time
-                if idx == 9:  # 'fullscreen' gesture
-                    pyautogui.press('f')
-                elif idx == 0:  # 'play/stop' gesture
-                    pyautogui.press('k')
-                elif idx == 10:  # 'nextvideo' gesture
-                    pyautogui.hotkey('shift','n')
-                elif idx == 6:  # 'prevpage' gesture
-                    pyautogui.hotkey('alt','left')
-            elif current_time - last_gesture_time >= 2:
-                last_gesture_time = current_time
-                if idx==5:
-                    mode = 0
-        return mode, last_gesture_time, last_gesture,text
+## If Something Goes Wrong   
 
-```
-## Demo
-https://github.com/starvvolf/ControlByGesture/assets/118524918/b5f34129-018a-46a1-b092-b45cec8ea091
-
-
-## if somethingwrong
-제스쳐 인식이 제대로 되지 않는다면, gatherdataset.py를 이용해 자신의 손에 맞게 데이터셋을 수집할 수 있습니다.
-code by: https://github.com/kairess/Rock-Paper-Scissors-Machine
+If gesture recognition does not work properly, you can collect a dataset tailored to your hand using `gatherdataset.py`.   
+Code by: https://github.com/kairess/Rock-Paper-Scissors-Machine   
 
 
 
